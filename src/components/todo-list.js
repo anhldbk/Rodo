@@ -9,10 +9,11 @@ class TodoList extends Component {
   }
 
   render(){
+    const {todos, toggleTodo} = this.props;
     return (
       <ul className="list-group">
         {
-          this.props.todos.map((todo) => {
+          todos.map((todo) => {
             const style = {
               textDecoration: todo.completed? 'line-through': 'none'
             };
@@ -20,7 +21,7 @@ class TodoList extends Component {
               <li key={todo.id} className="list-group-item"
                   onClick={() => {
                     console.log('Toggle Todo #'+ todo.id);
-                    this.props.toggleTodo(todo.id);
+                    toggleTodo(todo.id);
                   }}>
                 <span style={style}>{todo.text}</span>
               </li>
