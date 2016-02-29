@@ -1,26 +1,23 @@
 import React, {Component} from 'react';
-import * as TodoActionCreators from '../actions'
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as TodoActionCreators from '../actions';
 
 class TodoAdd extends Component {
-  constructor(){
-    super();
-    this._onClick = this._onClick.bind(this);
+  constructor(props){
+    super(props);
+    this._onClick=this._onClick.bind(this);
   }
-
   _onClick(event){
-    event.preventDefault();
-    this.props.newTodo(this.refs.input.value);
+    this.props.newTodo(this.input.value);
+    this.input.value = '';
   }
-
   render(){
-    var style ={
-      marginBottom: '10px'
-    }
-    return(
-      <div className="form-inline" style={style}>
-        <input type="text" className="form-control" id="new-todo" placeholder="New Todo" ref="input"/>
+    return (
+      <div className="form-inline">
+        <input type="text" className="form-control"
+          placeholder="Enter a todo"
+          ref={(node) => {this.input=node;}}/>
         <button onClick={this._onClick} className="btn btn-primary">Add</button>
       </div>
     );
@@ -32,8 +29,8 @@ const mapStateToProps = (state, ownProps) => {
   return state;
 }
 
-const mapDispachToProps = (dispatch, ownProps) => {
+const mapDistpatchToProps = (dispatch, ownProps) => {
   return bindActionCreators(TodoActionCreators, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispachToProps)(TodoAdd);
+export default connect(mapStateToProps, mapDistpatchToProps)(TodoAdd);

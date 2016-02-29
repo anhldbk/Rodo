@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import TodoList from './todo-list';
 import TodoAdd from './todo-add';
-import Counter from './counter';
 
 export default class App extends Component {
   render() {
