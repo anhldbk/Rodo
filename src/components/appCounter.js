@@ -11,8 +11,7 @@ export default class App extends Component {
     return (
       <div>
         <h1 style={headerStyle}>My Todo List</h1>
-          <TodoAdd />
-          <TodoList />
+        <Counter />
       </div>
     );
   }
